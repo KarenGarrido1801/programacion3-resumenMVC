@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modelo MVC</title>
+    <style>
+        header ,footer {
+            display: flex;
+            justify-content: center;
+        }
+        main > * {
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Resumen del Modelo MVC</h1>
+    </header>
+    <main>
+        <h2>¿Qué es el modelo MVC?</h2>
+        <p>
+            MVC (model-view-controller) es un patrón de arquitectura que divide una aplicación en tres partes. <br>Su objetivo es organizar el código, hacerlo más limpio, fácil de manear y de escalar.
+        </p>
+        <h2>1.	Modelo</h2>
+        <p>
+            Es la parte que trabaja con los datos;<br>
+            •	Accede a la base de datos.<br>
+            •	Guarda, busca y actualiza información.<br>
+            •	Reglas de negocio.<br>
+        </p>
+        <h2>2.	Vista</h2>
+        <p>
+           Es lo que el usuario ve;<br>
+            •	Pantallas<br>
+            •	Formularios<br>
+            •	Tablas <br>
+            •	HTML/CSS<br>
+        </p>
+        <h2>3.	Controlador</h2>
+        <p>
+            Es el “puente” entre la vista y el modelo;<br>
+            •	Recibe la información introducida por el usuario<br>
+            •	Llama al Modelo para obtener datos<br>
+            •	Envía datos a la vista para mostrar<br>
+        </p>
+        <h2>¿Cómo funciona MVC?</h2>
+        <p>
+            1.	El usuario hace una acción mediante la vista<br>
+            2.	La vista envía esa acción al controlador<br>
+            3.	El controlador habla con el modelo para obtener o guardar datos<br>
+            4.	El modelo responde con los datos<br>
+            5.	El controlador envía esos datos a la vista<br>
+            6.	La vista los muestra al usuario<br>
+        </p>
+        <h2>Ejemplo:</h2>
+        <h3>Modelo (User.php)</h3>
+        <pre> 
+            class User {
+                public function find($email) {
+                    return "Usuario encontrado";
+                }
+            }
+        </pre>
+        <h3>Controlador (UserController.php)</h3>
+        <pre>
+            class UserController {
+            public function login() {
+                $user = new User();
+                $resultado = $user->find($_POST["email"]);
+                return view("bienvenida", ["mensaje" => $resultado]);
+            }
+        }
+        </pre>
+        <h3>Vista (bienvenida.php)</h3>
+        <pre>
+            &lt;h1&gt;&lt;?php echo $mensaje; ?&gt;&lt;/h1&gt;
+        </pre>
+    </main>
+    <footer>
+          Derechos reservados.......Karen Garrido......mat. 100544303.......2025 
+    </footer>
+</body>
+</html>
